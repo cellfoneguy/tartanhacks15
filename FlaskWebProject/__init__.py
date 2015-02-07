@@ -7,7 +7,7 @@ def hello_world():
 
 @app.route('/hello')
 def hello():
-		return "hi"
+	return "hi"
 
 @app.route('/user/<username>')
 def show_user_profile(username):
