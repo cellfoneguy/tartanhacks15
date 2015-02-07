@@ -9,7 +9,6 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       // testAPI();   
-      document.getElementById('yolo').innerHTML = getUserInfo();
       // $('#yolo').innerHTML = getUserInfo().name;
 
     } else if (response.status === 'not_authorized') {
@@ -73,10 +72,11 @@
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
-  function getUserInfo() {
+  function getInfoSetName() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
+    document.getElementById('yolo').innerHTML = getUserInfo();
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
       return response.name;
