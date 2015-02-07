@@ -9,7 +9,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       // testAPI();   
-      getInfoSetName();
+      getInfo();
 
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
@@ -72,7 +72,7 @@
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
-  function getInfoSetName() {
+  function getInfo() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
