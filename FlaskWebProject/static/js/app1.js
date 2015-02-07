@@ -9,7 +9,8 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       // testAPI();   
-      $('#yolo').innerHTML = getUserInfo().name;
+      document.getElementById('yolo').innerHTML = getUserInfo().name;
+      // $('#yolo').innerHTML = getUserInfo().name;
 
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
