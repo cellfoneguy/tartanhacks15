@@ -111,11 +111,9 @@ function myFunction() {
           <h4><strong>Who Owes You</strong></h4>
          <div style="background-color: #FFF8C6; margin-left: 20px; margin-right: 20px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px;">
           <div id = "colored-box">
-            </a> <ul>
-              {% for element in array2 %}
-              <li><p>{{ element }}</p></li>
-              {% endfor %}
-                </ul>
+            </a>
+              <p id="fbfriend1"></p>
+              <p>owes you $2.00</p>
               <br/>
               </div>
             </div>
@@ -156,7 +154,16 @@ function myFunction() {
       <form role="form">
         <div class="form-group">
           <h4><strong> Group </strong></h4>
-          <textarea class="form-control" rows="10" placeholder="The people who are in your group"></textarea>
+          <div style="background-color: #FFF8C6; margin-left: 20px; margin-right: 20px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px;">
+          <div id = "colored-box">
+            </a> <ul>
+              {% for element in array %}
+              <li><p>{{ element }}</p></li>
+              {% endfor %}
+                </ul>
+              <br/>
+              </div>
+            </div>
         </div>
       </form>
     </div>
