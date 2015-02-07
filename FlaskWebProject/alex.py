@@ -44,7 +44,7 @@ class User(object):
 	def getFriends(self): #returns list of friends
 		return self.friends
 
-	def getCart(self): 
+	def getCart(self):
 		items = []
 		for item in self.cart:
 			items.append(item)
@@ -115,7 +115,7 @@ class Group(object):
 		self.number += 1
 		self.members.append(user)
 		self.groupCart[user]=user.cart
-		return user + "was added!"
+		return user.name + "was added!"
 	
 	def removeMember(self,user): #possible overlap?
 		self.number -= 1
@@ -179,8 +179,6 @@ print 'adding items to wishlist'
 eggs = Item('eggs','6 eggs',[])
 meat = Item('meat','1 large chicken yo',[])
 coke = Item('coke','1 liter of coke',[])
-
-print coke.get_description()
 
 paul.addItem(eggs)
 paul.addItem(meat)
