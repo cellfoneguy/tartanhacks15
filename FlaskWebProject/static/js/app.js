@@ -82,7 +82,6 @@
     });
   }
 
-$('yolo').innerHTML = getUserInfo().name;
-
-
-  module.exports.testAPI=testAPI;
+  $('yolo').innerHTML = 'sup bitch'
+  //$('yolo').innerHTML = getUserInfo().name;
+  module.exports.testAPI = testAPI;
