@@ -77,7 +77,7 @@
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
     document.getElementById('fbname').innerHTML = response.name;
-    document.getElementById('fbfriends').innerHTML = response.data[0];
+    document.getElementById('fbfriends').innerHTML = response.friends;
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
       return response;
