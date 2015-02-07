@@ -3,8 +3,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-	author = "Pu (Paul) Liang"
-	name = "piece of shit"
+	author = "someone"
+	name = "User"
     return render_template('index.html', author=author, name=name)
 
 if __name__ == "__main__":
