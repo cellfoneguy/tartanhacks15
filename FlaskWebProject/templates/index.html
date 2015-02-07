@@ -189,7 +189,13 @@
           <h4><strong>Who You Owe</strong></h4>
           <div style="background-color: #FFF8C6; margin-left: 20px; margin-right: 20px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px;">
           <div id = "colored-box">
-            </a><li>Kishan owes Doowon $50</li><br/>
+            
+            </a> <ul>
+              {% for person in array %}
+              <li>{{ person.whoYouOwe() }}</li>
+              {% endfor %}
+                </ul>
+              <br/>
               </div>
             </div>
           </div>
