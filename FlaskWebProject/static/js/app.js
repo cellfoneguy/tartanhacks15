@@ -82,7 +82,7 @@
     });
   }
 
-$('yolo').innerHTML = getUserInfo().name;
+  $('yolo').innerHTML = getUserInfo().name;
 
 
   module.exports.testAPI=testAPI;
