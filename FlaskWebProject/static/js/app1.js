@@ -77,8 +77,9 @@
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
     document.getElementById('fbname').innerHTML = response.name;
+    document.getElementById('fbgender').innerHTML = reponse.gender;
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
-      return response.name;
+      return response;
     });
   }
