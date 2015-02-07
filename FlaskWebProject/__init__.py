@@ -1,16 +1,17 @@
-from __future__ import with_statement # for Python 2.5 and 2.6
+#from __future__ import with_statement # for Python 2.5 and 2.6
 from flask import Flask, request, redirect, render_template, g
-import os
+#import os
 app = Flask(__name__)
 
 email_addresses = []
 
 def saveMap(contents): #actual saver function
 	path = "saved.txt"
-	if os.path.exists(path):
-		os.remove(path)
-	savedMap = open("saved.txt","wt")
+	#if os.path.exists(path):
+	#	os.remove(path)
+	savedMap = open(path,"wt")
 	savedMap.write(contents)
+	savedMap.close()
 
 def loadmap():
 	path = "saved.txt"
