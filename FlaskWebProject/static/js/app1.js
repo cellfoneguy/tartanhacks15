@@ -9,6 +9,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       // testAPI();   
+      getInfoSetName()
       // $('#yolo').innerHTML = getUserInfo().name;
 
     } else if (response.status === 'not_authorized') {
@@ -76,7 +77,7 @@
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
-    document.getElementById('yolo').innerHTML = getUserInfo();
+    document.getElementById('yolo').innerHTML = response.name;
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
       return response.name;
