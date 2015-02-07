@@ -38,11 +38,6 @@
       version    : 'v2.1' // use version 2.1
     });
 
-    FB.login(function(){
-      console.log('attempting login');
-      FB.api('/me/feed','post',{message:'test2'});
-    },{scope:'publish_actions'});
-
     // Now that we've initialized the JavaScript SDK, we call 
     // FB.getLoginStatus().  This function gets the state of the
     // person visiting this page and can return one of three states to
@@ -69,6 +64,8 @@
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+  
+  $('#yolo').innerHTML = getUserInfo().name;
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
@@ -83,6 +80,5 @@
   }
 
   //document.getElementById("yolo").innerHTML = "Have a nice day!";
-  $('#yolo').innerHTML = getUserInfo().name;
   //module.exports.testAPI = testAPI;
   //testnewlines
