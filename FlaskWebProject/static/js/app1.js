@@ -10,7 +10,6 @@
       // Logged into your app and Facebook.
       // testAPI();   
       getInfoSetName();
-      // $('#yolo').innerHTML = getUserInfo().name;
 
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
@@ -83,7 +82,3 @@
       return response.name;
     });
   }
-
-  //document.getElementById("yolo").innerHTML = "Have a nice day!";
-  //module.exports.testAPI = testAPI;
-  //testnewlines
