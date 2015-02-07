@@ -5,7 +5,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
 	person = alex.kishan
-	array = person.whoyouOwe().split('\n')
+	array = person.whoYouOwe().split('\n')
 	return render_template('index.html', person = person, array=array)
 
 if __name__ == "__main__":
