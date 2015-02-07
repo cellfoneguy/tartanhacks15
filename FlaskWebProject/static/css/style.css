@@ -1,6 +1,10 @@
-.form-group p{
+.form-group h4{
 	color:red;
 	font-size: 40px;
+}
+.from-group p{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 4px;
 }
 
 
