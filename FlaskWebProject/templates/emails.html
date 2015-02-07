@@ -2,13 +2,15 @@
 <html>
 	<head>
 		<title> I'm trying so hard T_T </title>
+		<link rel="import" href="/components/core-icons/core-icons.html">
+		<core-icon icon="info"></core-icon>
 	</head>
 
 	<body>
 		<p> Here are all the emails collected: </p>
 		<ul>
 			{% for email in email_addresses %}
-			<li>{{ email }}</li>
+			<li>{{ email[0] }}</li>
 			{% endfor %}
 		</ul>
 		<p> This sucks </p>
