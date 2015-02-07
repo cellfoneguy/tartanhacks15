@@ -9,7 +9,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       // testAPI();   
-      getInfoSetName()
+      getInfoSetName();
       // $('#yolo').innerHTML = getUserInfo().name;
 
     } else if (response.status === 'not_authorized') {
