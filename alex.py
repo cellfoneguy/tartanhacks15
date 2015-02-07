@@ -2,42 +2,32 @@ import time
 
 class Item(object):
 	
-	def __init__(self,name,description,wantedBy,
-				 date_purchased=None,purchased_by=None):
+	def __init__(self,name,wantedBy,boughtBy=None):
 		self.name = name
 		self.price = None
-		self.description = description
 		self.wantedBy = wantedBy
-		self.date_purchased = date_purchased
-		self.purchased_by = purchased_by
+		self.boughtBy = boughtBy
 		
 	def get_price(self):
-		return "$%0.2f" %self.price
-	
-	def get_description(self):
-		return self.description
+		return "$%0.2f" % self.price
 
-	def get_date(self):
-		return self.date_purchased
-
-	def get_purchaser(self):
-		return self.purchased_by.name
+	def get_boughtBy(self):
+		return self.boughtBy.name
 
 	def get_wantedBy(self):
 		return self.wantedBy
 
 class User(object):
-	
-	def __init__(self,name,friends=[],wishlist=[]):
+	def __init__(self,name,friends=[],cart=[]):
 		self.name = name
 		self.friends = friends
-		self.wishlist = wishlist
-		self.friends_and_money = dict()
+		self.cart = cart
+		self.debts = {}
 
-	def update_friends_and_money(self):
+	def update_debts(self):
 		for friend in self.friends:
-			if friend not in self.friends_and_money:
-				self.friends_and_money[friend] = 0
+			if friend not in self.debts:
+				self.debts[friend] = 0
 
 	def befriend(self,other):
 		if self in other.friends or other in self.friends:
@@ -45,8 +35,8 @@ class User(object):
 			return
 		self.friends.append(other)
 		other.friends.append(self)
-		self.update_friends_and_money()
-		other.update_friends_and_money()
+		self.update_debts()
+		other.update_debts()
 
 	def get_name(self):
 		return self.name
@@ -65,8 +55,8 @@ class User(object):
 
 	def print_dict(self):
 		printed_dict = {}
-		for friend in self.friends_and_money:
-			printed_dict[friend.name] = self.friends_and_money[friend]
+		for friend in self.debts:
+			printed_dict[friend.name] = self.debts[friend]
 		return printed_dict
 		
 	def add_item(self,item):
@@ -87,7 +77,7 @@ class User(object):
 	def buy_item_for_self(self,item,price,date):
 		self.wishlist.remove(item)
 		item.date_purchased = time.time()
-		item.purchased_by = self.name
+		item.boughtBy = self.name
 		item.date_purchased = date
 		item.price = price
 		item.wantedBy.remove(self.name)
@@ -101,21 +91,21 @@ class User(object):
 		except:
 			pass
 		item.date_purchased = date
-		item.purchased_by = self
+		item.boughtBy = self
 		item.price = price
-		friend.friends_and_money[self] += item.price
+		friend.debts[self] += item.price
 		
 	def who_you_owe(self):
 		result = ""
-		for friend in self.friends_and_money:
-			money_owed = self.friends_and_money[friend]
+		for friend in self.debts:
+			money_owed = self.debts[friend]
 			result += "You owe %s $%0.2f" %(friend.name,money_owed)
 			result += "\n"
 		return result
 
 	def do_you_owe(self):
-		for friend in self.friends_and_money:
-			money_owed = self.friends_and_money[friend]
+		for friend in self.debts:
+			money_owed = self.debts[friend]
 			if money_owed != 0:
 				return False
 		return True
@@ -123,9 +113,9 @@ class User(object):
 	def who_owes_you(self):
 		result = ""
 		for friend in self.friends:
-			their_dict = friend.friends_and_money
-			if self in friend.friends_and_money:
-				money_owed = friend.friends_and_money[self]
+			their_dict = friend.debts
+			if self in friend.debts:
+				money_owed = friend.debts[self]
 				result += "%s owes you $%0.2f" %(friend.name,money_owed)
 			result += "\n"
 		return result
@@ -307,7 +297,7 @@ print alex.print_dict()
 print
 
 print coke.get_date()
-print coke.get_purchaser()
+print coke.get_boughtBy()
 print
 
 #checking money
