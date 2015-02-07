@@ -7,5 +7,5 @@ def hello_world():
 	name = "piece of shit"
     return render_template('index.html', author=author, name=name)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
