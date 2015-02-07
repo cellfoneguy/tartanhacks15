@@ -33,8 +33,12 @@ class Group(object):
         return self.group_wishlist
 
     def group_simplify(self):
-        return        
-
+        end = len(self.members)
+        for index1 in xrange(end):
+            for index2 in xrange(index1+1,end):
+                friend1 = self.members[index1]
+                friend2 = self.members[index2]
+                
 class User(object):
     
     def __init__(self,name,friends=[],wishlist=[]):
@@ -115,17 +119,26 @@ class User(object):
         result = ""
         for friend in self.friends_and_money:
             money_owed = self.friends_and_money[friend]
-            result += "You owe %s $%0.2f" %(friend, money_owed)
+            result += "You owe %s $%0.2f" %(friend.name,money_owed)
+            result += "\n"
         return result
+
+    def do_you_owe(self):
+        for friend in self.friends_and_money:
+            money_owed = self.friends_and_money[friend]
+            if money_owed != 0:
+                return False
+        return True
 
     def who_owes_you(self):
         result = ""
-        for friend in friends:
+        for friend in self.friends:
             their_dict = friend.friends_and_money
-            if self.name in friend.friends_and_money:
-                money_owed = friend.friends_and_money[self.name]
-                result += "%s owes you $%0.2f" %(friend, money_owed)
-        return result          
+            if self in friend.friends_and_money:
+                money_owed = friend.friends_and_money[self]
+                result += "%s owes you $%0.2f" %(friend.name,money_owed)
+            result += "\n"
+        return result
             
     def pay_person(self,target,amount):
         return
@@ -268,8 +281,9 @@ print doowon.print_dict()
 print kishan.print_dict()
 print alex.print_dict()
 
-doowon.buy_item_for_other(meat,kishan)
-doowon.buy_item_for_other(coke,kishan)
+alex.buy_item_for_other(meat,kishan)
+alex.buy_item_for_other(coke,kishan)
+alex.buy_item_for_other(meat,paul)
 
 print paul.get_wishlist()
 print doowon.get_wishlist()
@@ -280,8 +294,23 @@ print paul.print_dict()
 print doowon.print_dict()
 print kishan.print_dict()
 print alex.print_dict()
+print
 
+#checking money
+print 'checking money'
 
+print 'paul'
+print paul.who_you_owe()
+print paul.who_owes_you()
+print 'doowon'
+print doowon.who_you_owe()
+print doowon.who_owes_you()
+print 'kishan'
+print kishan.who_you_owe()
+print kishan.who_owes_you()
+print 'alex'
+print alex.who_you_owe()
+print alex.who_owes_you()
 
     
 
