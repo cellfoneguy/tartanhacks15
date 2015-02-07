@@ -9,7 +9,7 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       // testAPI();   
-      document.getElementById('yolo').innerHTML = getUserInfo().name;
+      document.getElementById('yolo').innerHTML = getUserInfo();
       // $('#yolo').innerHTML = getUserInfo().name;
 
     } else if (response.status === 'not_authorized') {
@@ -79,7 +79,7 @@
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
-      return response;
+      return response.name;
     });
   }
 
