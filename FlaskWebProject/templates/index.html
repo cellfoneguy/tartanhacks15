@@ -15,6 +15,7 @@
     }
   </style>
   <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+      <div id="yolo"></div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script type="text/javascript" src="../static/fullPage/jquery.fullPage.js"></script>
   <script type="text/javascript">
@@ -72,9 +73,6 @@
   <div class="row"> <div class="col-md-12"> </br> </div> </div>
   <div class="row"> <div class="col-md-12"> </br> </div> </div>
   <div class="row"> <div class="col-md-12"> </br> </div> </div>
-  <div class="row"> <div class="col-md-12">  
-    <p>Please note that this is only the basic layout of the website.       Actual features will be implemented soon enough.</p>
-  </div> </div>
   <div class="row-fluid">
     <div class="col-md-10 col-md-offset-1">
       <form role="form">
@@ -83,7 +81,20 @@
           document.getElementById("yolo").innerHTML = "Have a nice day!";
           </script>
           <h4 id="yolo"><strong> List of Items </strong></h4>
-          <textarea class="form-control" rows="25" placeholder="List of Items"></textarea>
+          <p>Click the button to demonstrate the prompt box.</p>
+          <button onclick="myFunction()">Try it</button>
+          <p id="demo"></p>
+<script>
+function myFunction() {
+    var person = prompt("Please enter your name", "Harry Potter");
+    
+    if (person != null) {
+        document.getElementById("demo").innerHTML =
+        "Hello " + person + "! How are you today?";
+    }
+}
+</script>
+          <textarea class="form-control" rows="25" placeholder="List of Items2"></textarea>
         </div>
       </form>
     </div>
@@ -102,7 +113,16 @@
       <form role="form">
         <div class="form-group">
           <h4><strong>Who Owes You</strong></h4>
-          <textarea class="form-control" rows="20" placeholder="People who owe you money"></textarea>
+         <div style="background-color: #FFF8C6; margin-left: 20px; margin-right: 20px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px; padding-top: 15px;">
+          <div id = "colored-box">
+            </a> <ul>
+              {% for element in array2 %}
+              <li><p>{{ element }}</p></li>
+              {% endfor %}
+                </ul>
+              <br/>
+              </div>
+            </div>
         </div>
       </form>
     </div>
@@ -114,7 +134,7 @@
           <div id = "colored-box">
             </a> <ul>
               {% for element in array %}
-              <li>{{ element }}</li>
+              <li><p>{{ element }}</p></li>
               {% endfor %}
                 </ul>
               <br/>

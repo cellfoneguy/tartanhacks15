@@ -4,17 +4,18 @@
 }
 .from-group p{
 	font-family: 'Ubuntu', sans-serif;
-	font-size: 4px;
+	font-size: 20px;
 }
 
 #colored-box{
-	background-color: green; 
+	background-color: LightGreen; 
 	margin-left: 20px; 
 	margin-right: 20px; 
 	padding-bottom: 15px; 
 	padding-left: 15px; 
 	padding-right: 15px; 
 	padding-top: 15px;
+	font-size: 20px;
 }
 
 

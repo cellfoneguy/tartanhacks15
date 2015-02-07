@@ -83,5 +83,5 @@
   }
 
   //document.getElementById("yolo").innerHTML = "Have a nice day!";
-  //$('yolo').innerHTML = getUserInfo().name;
+  $('#yolo').innerHTML = getUserInfo().name;
   module.exports.testAPI = testAPI;
