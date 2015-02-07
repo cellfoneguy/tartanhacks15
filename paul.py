@@ -97,13 +97,15 @@ class User(object):
         item.wanted_by.remove(self.name)
         return "Removed %s from wishlist!" %item.name
         
-    def buy_item_for_self(self,item):
+    def buy_item_for_self(self,item,price,date):
         self.wishlist.remove(item)
         item.date_purchased = time.time()
         item.purchased_by = self.name
+        item.date_purchased = date
+        item.price = price
         item.wanted_by.remove(self.name)
 
-    def buy_item_for_other(self,item,friend):
+    def buy_item_for_other(self,item,friend,price,date):
         if item not in friend.wishlist:
             print "%s did not want this item!!!" %friend.name
             
@@ -111,8 +113,9 @@ class User(object):
             friend.wishlist.remove(item)
         except:
             pass
-        item.date_purchased = time.time()
+        item.date_purchased = date
         item.purchased_by = self
+        item.price = price
         friend.friends_and_money[self] += item.price
         
     def who_you_owe(self):
@@ -148,10 +151,10 @@ class User(object):
 
 class Item(object):
     
-    def __init__(self,name,price,description,wanted_by,
+    def __init__(self,name,description,wanted_by,
                  date_purchased=None,purchased_by=None):
         self.name = name
-        self.price = price
+        self.price = None
         self.description = description
         self.wanted_by = wanted_by
         self.date_purchased = date_purchased
@@ -163,10 +166,16 @@ class Item(object):
     def get_description(self):
         return self.description
 
+    def get_date(self):
+        return self.date_purchased
+
+    def get_purchaser(self):
+        return self.purchased_by.name
+
     def get_wanted_by(self):
         return self.wanted_by
 
-
+    
 #users, friends and family
 print 'users, friends and family'
 paul = User('paul',[],[])
@@ -198,11 +207,10 @@ print
 
 #adding items to wishlist
 print 'adding items to wishlist'
-eggs = Item('eggs',2,'6 eggs',[])
-meat = Item('meat',5,'1 large chicken yo',[])
-coke = Item('coke',1.5,'1 liter of coke',[])
+eggs = Item('eggs','6 eggs',[])
+meat = Item('meat','1 large chicken yo',[])
+coke = Item('coke','1 liter of coke',[])
 
-print eggs.get_price()
 print coke.get_description()
 
 paul.add_item(eggs)
@@ -250,6 +258,7 @@ print
 
 
 #buying items
+today = '7 Feb 2015'
 print 'buying items'
 
 print paul.get_wishlist()
@@ -258,18 +267,18 @@ print kishan.get_wishlist()
 print alex.get_wishlist()
 print
 
-paul.buy_item_for_self(eggs)
+paul.buy_item_for_self(eggs,2,today)
 
 print paul.get_wishlist()
 print paul.print_dict()
 print doowon.print_dict()
 print eggs.get_wanted_by()
 
-paul.buy_item_for_other(coke,doowon)
-paul.buy_item_for_other(coke,doowon)
-paul.buy_item_for_other(eggs,alex)
-paul.buy_item_for_other(eggs,kishan)
-paul.buy_item_for_other(coke,alex)
+paul.buy_item_for_other(coke,doowon,1.5,today)
+paul.buy_item_for_other(coke,doowon,1.5,today)
+paul.buy_item_for_other(eggs,alex,2,today)
+paul.buy_item_for_other(eggs,kishan,2,today)
+paul.buy_item_for_other(coke,alex,1.5,today)
 
 print paul.get_wishlist()
 print doowon.get_wishlist()
@@ -281,9 +290,9 @@ print doowon.print_dict()
 print kishan.print_dict()
 print alex.print_dict()
 
-alex.buy_item_for_other(meat,kishan)
-alex.buy_item_for_other(coke,kishan)
-alex.buy_item_for_other(meat,paul)
+alex.buy_item_for_other(meat,kishan,5,today)
+alex.buy_item_for_other(coke,kishan,1.5,today)
+alex.buy_item_for_other(meat,paul,5,today)
 
 print paul.get_wishlist()
 print doowon.get_wishlist()
@@ -294,6 +303,10 @@ print paul.print_dict()
 print doowon.print_dict()
 print kishan.print_dict()
 print alex.print_dict()
+print
+
+print coke.get_date()
+print coke.get_purchaser()
 print
 
 #checking money
@@ -312,7 +325,10 @@ print 'alex'
 print alex.who_you_owe()
 print alex.who_owes_you()
 
-    
+print eggs.get_price()
+print coke.get_price()
+print meat.get_price()
+
 
 
     
