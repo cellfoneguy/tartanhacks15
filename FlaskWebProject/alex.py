@@ -55,7 +55,7 @@ class User(object):
 		self.updateWantedBy(self.cart)
 		return "Added %s to cart!" % item.name
 
-	def updateWantedBy(self): update group cart
+	def updateWantedBy(self): #update group cart
 		for item in self.cart:
 			if self not in item.wantedBy:
 				item.wantedBy.append(self)
