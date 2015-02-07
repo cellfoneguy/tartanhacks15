@@ -1,4 +1,12 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
+.form-group p{
+	color:red;
+	font-size: 130px;
+}
+
+
+/* Move down content because we have a fixed navbar that is 50px tall
+
+
 body {
   padding-top: 50px;
 }
@@ -86,9 +94,15 @@ footer {
 	margin: 15px auto;
 }
 
+*/
+
+
 
 
 /* Responsive Styling */
+
+/* 
+
 @media (max-width: 1199px) {
 
 	.jumbotron h1{
@@ -144,4 +158,8 @@ footer {
 	footer img{
 		width:80%;
 	}
-}
+
+
+
+}*/
+
