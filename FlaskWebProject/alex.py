@@ -2,7 +2,7 @@ import time
 
 class Item(object):
 	
-	def __init__(self,name,wantedBy,boughtBy=None):
+	def __init__(self,name,wantedBy=[],boughtBy=None):
 		self.name = name
 		self.price = None
 		self.wantedBy = wantedBy
@@ -23,6 +23,9 @@ class User(object):
 		self.friends = friends
 		self.cart = cart
 		self.debts = {}
+
+	def __str__(self):
+		return self.name
 
 	def updateDebts(self): #add a new friend to debt lists
 		for friend in self.friends:
@@ -52,7 +55,7 @@ class User(object):
 
 	def addItem(self,item): #add
 		self.cart.append(item)
-		self.updateWantedBy(self.cart)
+		self.updateWantedBy()
 		return "Added %s to cart!" % item.name
 
 	def updateWantedBy(self): #update group cart
@@ -176,9 +179,9 @@ print
 
 #adding items to wishlist
 print 'adding items to wishlist'
-eggs = Item('eggs','6 eggs',[])
-meat = Item('meat','1 large chicken yo',[])
-coke = Item('coke','1 liter of coke',[])
+eggs = Item('eggs',[])
+meat = Item('meat',[])
+coke = Item('coke',[])
 
 paul.addItem(eggs)
 paul.addItem(meat)
@@ -234,45 +237,44 @@ print kishan.getCart()
 print alex.getCart()
 print
 
-paul.buyForSelf(eggs,2,today)
+paul.buyForSelf(eggs,2)
 
 print paul.getCart()
-print paul.printDict()
-print doowon.printDict()
+print paul.debts
+print doowon.debts
 print eggs.getWantedBy()
 
-paul.buyForOther(coke,doowon,1.5,today)
-paul.buyForOther(coke,doowon,1.5,today)
-paul.buyForOther(eggs,alex,2,today)
-paul.buyForOther(eggs,kishan,2,today)
-paul.buyForOther(coke,alex,1.5,today)
+paul.buyForOther(coke,doowon,1.5)
+paul.buyForOther(coke,doowon,1.5)
+paul.buyForOther(eggs,alex,2)
+paul.buyForOther(eggs,kishan,2)
+paul.buyForOther(coke,alex,1.5)
 
 print paul.getCart()
 print doowon.getCart()
 print kishan.getCart()
 print alex.getCart()
 print
-print paul.printDict()
-print doowon.printDict()
-print kishan.printDict()
-print alex.printDict()
+print paul.debts
+print doowon.debts
+print kishan.debts
+print alex.debts
 
-alex.buyForOther(meat,kishan,5,today)
-alex.buyForOther(coke,kishan,1.5,today)
-alex.buyForOther(meat,paul,5,today)
+alex.buyForOther(meat,kishan,5)
+alex.buyForOther(coke,kishan,1.5)
+alex.buyForOther(meat,paul,5)
 
 print paul.getCart()
 print doowon.getCart()
 print kishan.getCart()
 print alex.getCart()
 print
-print paul.printDict()
-print doowon.printDict()
-print kishan.printDict()
-print alex.printDict()
+print paul.debts
+print doowon.debts
+print kishan.debts
+print alex.debts
 print
 
-print coke.get_date()
 print coke.getBoughtBy()
 print
 
