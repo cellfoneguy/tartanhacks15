@@ -74,7 +74,7 @@
   // successful.  See statusChangeCallback() for when this call is made.
   function getInfo() {
     console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
+    FB.api('/me/friends', function(response) {
       console.log('Successful login for: ' + response.name);
     document.getElementById('fbname').innerHTML = response.name;
     document.getElementById('fbfriends').innerHTML = response.friends;
